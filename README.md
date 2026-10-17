@@ -15,7 +15,8 @@ gallery.css          # 响应式网格 + 进度条样式
 gallery.js           # 勾选 / 全选 / 反选 / 批量下载（三级跨域兜底策略）
 icons/               # 扩展图标（16/32/48/128，tools/make_icons.py 生成）
 test/run-tests.js    # Node 单元测试（52 项断言）
-website/index.html   # 插件展示官网（纯静态，双击即可打开）
+website/index.html   # 早期版展示页（纯静态）
+docs/index.html      # 官方宣传网站「图提取 ImageGrab」（纯静态，双击即可打开）
 tools/make_icons.py  # 图标生成脚本（PIL）
 ```
 

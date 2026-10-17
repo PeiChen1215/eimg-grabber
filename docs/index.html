@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <!-- 视口设置：移动端适配基础 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="图提取 ImageGrab — 一键提取淘宝、京东、拼多多商家版商品详情页所有图片，勾选批量下载为 PNG。">
+  <title>图提取 ImageGrab · 电商图片一键提取下载</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==================== 1. 顶部导航栏 ==================== -->
+  <header class="nav" id="navbar">
+    <div class="container nav__inner">
+      <!-- 左侧 Logo：内联 SVG 图标 + 产品名 -->
+      <a class="nav__brand" href="#hero" aria-label="图提取首页">
+        <svg class="nav__logo" viewBox="0 0 48 48" width="30" height="30" aria-hidden="true">
+          <defs>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#7c5cff"/>
+              <stop offset="1" stop-color="#4f7cff"/>
+            </linearGradient>
+          </defs>
+          <rect x="2" y="2" width="44" height="44" rx="12" fill="url(#logoGrad)"/>
+          <rect x="12" y="14" width="24" height="20" rx="3" fill="none" stroke="#fff" stroke-width="2.5"/>
+          <circle cx="18.5" cy="20.5" r="2.5" fill="#fff"/>
+          <path d="M12 31l6.5-6 4.5 4 5-5.5L36 31" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M30 10h8v8" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M38 10l-7 7" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <span class="nav__name">图提取 <em>ImageGrab</em></span>
+      </a>
+
+      <!-- 右侧锚点导航（桌面端） -->
+      <nav class="nav__links" id="nav-links" aria-label="页面导航">
+        <a href="#about" data-spy="about">产品介绍</a>
+        <a href="#features" data-spy="features">核心功能</a>
+        <a href="#install" data-spy="install">安装步骤</a>
+        <a href="#download" class="nav__cta" data-spy="download">下载插件</a>
+      </nav>
+
+      <!-- 汉堡按钮（移动端） -->
+      <button class="nav__toggle" id="nav-toggle" aria-label="打开菜单" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== 2. Hero 首屏 ==================== -->
+    <section class="hero" id="hero">
+      <div class="container hero__inner">
+        <div class="hero__text reveal">
+          <h1 class="hero__title">
+            一键提取电商详情页<br><span class="grad-text">所有图片，批量下载为 PNG</span>
+          </h1>
+          <p class="hero__sub">
+            支持淘宝 / 天猫 / 京东 / 拼多多商家版商品详情页。
+            自动扫描、智能过滤、集中预览、勾选即存，做图效率翻倍。
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#install">立即安装</a>
+            <a class="btn btn--ghost" href="#features">查看功能</a>
+          </div>
+          <ul class="hero__meta">
+            <li>Manifest V3</li>
+            <li>免登录 · 本地运行</li>
+            <li>开源免费</li>
+          </ul>
+        </div>
+
+        <!-- 插件界面示意图：纯 CSS 模拟浏览器窗口 + 悬浮按钮 + 画廊 -->
+        <div class="hero__mock reveal" aria-hidden="true">
+          <div class="mock-window">
+            <div class="mock-window__bar">
+              <i></i><i></i><i></i>
+              <span class="mock-window__url">item.taobao.com/item.htm?id=…</span>
+            </div>
+            <div class="mock-window__body">
+              <div class="mock-fab">获取图片</div>
+              <div class="mock-grid">
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+              </div>
+            </div>
+          </div>
+          <div class="mock-float mock-float--a">PNG ✓</div>
+          <div class="mock-float mock-float--b">已选 6 张</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. 产品介绍：解决什么问题 ==================== -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__tag">产品介绍</p>
+          <h2 class="section__title">电商做图，还在为存图发愁？</h2>
+          <p class="section__desc">
+            竞品分析、素材收集、店铺上新……电商详情页里藏着大量高质量商品图，
+            但原生页面并不提供批量保存能力。图提取就是为了解决这个问题而生。
+          </p>
+        </div>
+
+        <div class="problem-grid">
+          <!-- 问题卡片 1：图片分散 -->
+          <article class="problem-card reveal">
+            <div class="problem-card__icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+                <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+                <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+                <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+              </svg>
+            </div>
+            <h3>图片高度分散</h3>
+            <p>主图、SKU 图、详情长图散落在轮播、懒加载、背景样式和内联脚本里，右键另存要逐张翻找。</p>
+          </article>
+
+          <!-- 问题卡片 2：无法批量保存 -->
+          <article class="problem-card reveal">
+            <div class="problem-card__icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v12"/>
+                <path d="M7 10l5 5 5-5"/>
+                <path d="M4 19h16"/>
+              </svg>
+            </div>
+            <h3>无法批量保存</h3>
+            <p>平台页面不提供打包下载，一张张手动保存既耗时又容易漏图、存错图。</p>
+          </article>
+
+          <!-- 问题卡片 3：格式不统一 -->
+          <article class="problem-card reveal">
+            <div class="problem-card__icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 7V5h16v2"/>
+                <path d="M12 5v14"/>
+                <path d="M9 15l3 4 3-4"/>
+              </svg>
+            </div>
+            <h3>格式规格不一</h3>
+            <p>webp、jpg 混用，尺寸参差不齐，拿到手还要逐个转格式、改名字才能入库使用。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. 核心功能 ==================== -->
+    <section class="section section--alt" id="features">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__tag">核心功能</p>
+          <h2 class="section__title">六个功能，覆盖存图全流程</h2>
+          <p class="section__desc">从扫描页面到落盘保存，每一步都替你做好。</p>
+        </div>
+
+        <div class="feature-grid">
+          <!-- 功能卡片：一键提取 -->
+          <article class="feature-card reveal">
+            <div class="feature-card__icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="7"/>
+                <path d="M21 21l-4.3-4.3"/>
+                <path d="M8 11h6M11 8v6"/>
+              </svg>
+            </div>
+            <h3>一键提取</h3>
+            <p>自动扫描页面全部商品图，兼容懒加载属性与响应式 srcset，滚动过的图都不会漏。</p>
+          </article>
+
+          <!-- 功能卡片：智能过滤 -->
+          <article class="feature-card reveal">
+            <div class="feature-card__icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 5h18l-7 8v6l-4-2v-4L3 5z"/>
+              </svg>
+            </div>
+            <h3>智能过滤</h3>
+            <p>自动排除图标、logo、占位图、1×1 像素图与小于 100×100 的无效图片。</p>
+          </article>
+
+          <!-- 功能卡片：集中预览 -->
+          <article class="feature-card reveal">
+            <div class="feature-card__icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <path d="M3 9h18M9 9v12"/>
+              </svg>
+            </div>
+            <h3>集中预览</h3>
+            <p>提取结果在新标签页网格化展示，缩略图、尺寸信息一目了然。</p>
+          </article>
+
+          <!-- 功能卡片：自由勾选 -->
+          <article class="feature-card reveal">
+            <div class="feature-card__icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <path d="M8 12.5l2.5 2.5L16 9"/>
+              </svg>
+            </div>
+            <h3>自由勾选</h3>
+            <p>全选、反选、单张点选，只下载真正需要的图片，不多存一张废图。</p>
+          </article>
+
+          <!-- 功能卡片：统一 PNG -->
+          <article class="feature-card reveal">
+            <div class="feature-card__icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <path d="M7 16l2.5-8 2 5.5L13.5 9 16 16"/>
+              </svg>
+            </div>
+            <h3>统一 PNG</h3>
+            <p>自动将 webp、jpg 等格式统一转为 PNG，入库即用，无需二次转码。</p>
+          </article>
+
+          <!-- 功能卡片：批量下载 -->
+          <article class="feature-card reveal">
+            <div class="feature-card__icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v10"/>
+                <path d="M8 9l4 4 4-4"/>
+                <path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/>
+              </svg>
+            </div>
+            <h3>批量下载</h3>
+            <p>一键保存到本地，文件名按 <code>商品图_001.png</code> 自动编号，进度与结果实时反馈。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. 安装步骤 ==================== -->
+    <section class="section" id="install">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__tag">安装步骤</p>
+          <h2 class="section__title">四步完成安装</h2>
+          <p class="section__desc">开发者模式本地加载，无需商店审核，即装即用。</p>
+        </div>
+
+        <ol class="steps">
+          <!-- 步骤 1 -->
+          <li class="step reveal">
+            <span class="step__num">1</span>
+            <div class="step__body">
+              <h3>下载并解压</h3>
+              <p>从 GitHub 下载插件压缩包，解压到本地任意文件夹（建议路径不含中文）。</p>
+            </div>
+          </li>
+          <!-- 步骤 2 -->
+          <li class="step reveal">
+            <span class="step__num">2</span>
+            <div class="step__body">
+              <h3>打开扩展管理页</h3>
+              <p>打开 Chrome，地址栏输入 <code>chrome://extensions</code> 后回车。</p>
+            </div>
+          </li>
+          <!-- 步骤 3 -->
+          <li class="step reveal">
+            <span class="step__num">3</span>
+            <div class="step__body">
+              <h3>开启开发者模式</h3>
+              <p>打开页面右上角的「开发者模式」开关。</p>
+            </div>
+          </li>
+          <!-- 步骤 4 -->
+          <li class="step reveal">
+            <span class="step__num">4</span>
+            <div class="step__body">
+              <h3>加载扩展程序</h3>
+              <p>点击「加载已解压的扩展程序」，选择解压后的文件夹即可。</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ==================== 6. 底部 CTA ==================== -->
+    <section class="cta" id="download">
+      <div class="container cta__inner reveal">
+        <h2>现在就把详情页的图片<br class="br-mobile">全部装进素材库</h2>
+        <p>开源免费，本地运行，不上传任何数据。</p>
+        <!-- 下载按钮：指向 GitHub 仓库（占位，可替换为压缩包直链） -->
+        <a class="btn btn--light btn--lg" href="https://github.com/PeiChen1215/eimg-grabber" target="_blank" rel="noopener">下载插件</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== Footer ==================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__copy">© 2026 图提取 ImageGrab · 仅供学习交流使用</p>
+      <div class="footer__links">
+        <a href="https://github.com/PeiChen1215/eimg-grabber" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          GitHub
+        </a>
+        <span class="footer__sep">·</span>
+        <span class="footer__platforms">支持 淘宝 / 天猫 / 京东 / 拼多多</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
