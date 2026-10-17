@@ -1,0 +1,9 @@
+# 开发对话记录（仅本地留存）
+docs/对话记录.md
+
+# 系统/编辑器杂物
+Thumbs.db
+desktop.ini
+.DS_Store
+*.log
+node_modules/

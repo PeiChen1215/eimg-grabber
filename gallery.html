@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图片提取结果 · 电商图片提取下载助手</title>
+  <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+  <!-- 顶部工具栏 -->
+  <header class="toolbar">
+    <div class="toolbar__left">
+      <img class="toolbar__logo" src="icons/icon32.png" alt="logo">
+      <h1 class="toolbar__title">图片提取结果</h1>
+      <span id="source-info" class="toolbar__source"></span>
+    </div>
+    <div class="toolbar__right">
+      <span class="toolbar__count">已选 <strong id="selected-count">0</strong> / <span id="total-count">0</span> 张</span>
+      <button id="btn-select-all" class="btn btn--ghost">全选</button>
+      <button id="btn-invert" class="btn btn--ghost">反选</button>
+      <button id="btn-download" class="btn btn--primary" disabled>下载选中</button>
+    </div>
+  </header>
+
+  <!-- 下载进度条 -->
+  <div id="progress-wrap" class="progress-wrap" hidden>
+    <div class="progress-wrap__text">
+      <span id="progress-text">正在下载…</span>
+      <span id="progress-result"></span>
+    </div>
+    <div class="progress-bar">
+      <div id="progress-fill" class="progress-bar__fill"></div>
+    </div>
+  </div>
+
+  <!-- 图片网格 -->
+  <main id="grid" class="grid"></main>
+
+  <!-- 空状态 / 加载失败提示 -->
+  <div id="empty" class="empty" hidden>
+    <div class="empty__icon">🖼️</div>
+    <p class="empty__text" id="empty-text">未找到图片数据，请回到商品详情页点击「获取图片」。</p>
+  </div>
+
+  <script src="gallery.js"></script>
+</body>
+</html>

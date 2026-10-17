@@ -1,0 +1,68 @@
+/* ==========================================================================
+ * content.css — 悬浮「获取图片」按钮样式
+ * 所有选择器均以 eimg- 前缀命名，避免与电商平台页面 CSS 冲突
+ * ========================================================================== */
+
+.eimg-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 96px;               /* 上移一段距离，避开各平台右下角的客服/工具栏 */
+  z-index: 2147483000;        /* 极高的层级，确保浮在页面内容之上 */
+  padding: 12px 20px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4), 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.eimg-fab:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 10px 24px rgba(79, 70, 229, 0.5), 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
+.eimg-fab:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.eimg-fab:disabled {
+  opacity: 0.7;
+  cursor: wait;
+  transform: none;
+}
+
+/* 提取成功 / 失败时的临时提示气泡 */
+.eimg-toast {
+  position: fixed;
+  right: 24px;
+  bottom: 160px;
+  z-index: 2147483000;
+  max-width: 280px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: rgba(17, 24, 39, 0.92);
+  color: #ffffff;
+  font-size: 13px;
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  line-height: 1.5;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  animation: eimg-toast-in 0.2s ease;
+  word-break: break-all;
+}
+
+.eimg-toast.eimg-toast--error {
+  background: rgba(185, 28, 28, 0.95);
+}
+
+@keyframes eimg-toast-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

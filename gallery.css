@@ -1,0 +1,196 @@
+/* ==========================================================================
+ * gallery.css — 图片画廊页面样式（响应式网格布局）
+ * ========================================================================== */
+
+:root {
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --bg: #f5f6fa;
+  --card-bg: #ffffff;
+  --text: #1f2937;
+  --text-secondary: #6b7280;
+  --border: #e5e7eb;
+  --success: #059669;
+  --danger: #dc2626;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  min-height: 100vh;
+}
+
+/* ---------------- 顶部工具栏 ---------------- */
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 14px 24px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.toolbar__left { display: flex; align-items: center; gap: 10px; }
+.toolbar__logo { width: 28px; height: 28px; }
+.toolbar__title { font-size: 17px; font-weight: 700; }
+.toolbar__source {
+  font-size: 12px;
+  color: var(--text-secondary);
+  max-width: 320px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.toolbar__right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.toolbar__count { font-size: 13px; color: var(--text-secondary); margin-right: 4px; }
+.toolbar__count strong { color: var(--primary); font-size: 15px; }
+
+/* ---------------- 按钮 ---------------- */
+.btn {
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+}
+.btn--ghost {
+  background: #ffffff;
+  border-color: var(--border);
+  color: var(--text);
+}
+.btn--ghost:hover { border-color: var(--primary); color: var(--primary); }
+.btn--primary {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.35);
+}
+.btn--primary:hover:not(:disabled) { background: var(--primary-dark); transform: translateY(-1px); }
+.btn--primary:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ---------------- 进度条 ---------------- */
+.progress-wrap {
+  margin: 16px 24px 0;
+  padding: 12px 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.progress-wrap__text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+#progress-result.success { color: var(--success); }
+#progress-result.error { color: var(--danger); }
+.progress-bar {
+  height: 8px;
+  background: #eef0f4;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress-bar__fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--primary), #8b5cf6);
+  border-radius: 999px;
+  transition: width 0.2s ease;
+}
+
+/* ---------------- 图片网格（响应式） ---------------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 20px 24px 48px;
+}
+
+.card {
+  position: relative;
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+.card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); }
+.card.selected { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15); }
+
+.card__img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  background:
+    repeating-conic-gradient(#f3f4f6 0% 25%, #ffffff 0% 50%) 0 0 / 16px 16px; /* 棋盘格底，便于查看透明图 */
+  display: block;
+}
+
+.card__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+}
+.card__size {
+  font-size: 11px;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 复选框 */
+.card__checkbox {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 22px;
+  height: 22px;
+  accent-color: var(--primary);
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* 下载状态角标 */
+.card__badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  z-index: 2;
+}
+.card__badge--ok { background: var(--success); }
+.card__badge--fail { background: var(--danger); }
+.card__badge--wait { background: #d97706; }
+
+/* ---------------- 空状态 ---------------- */
+.empty {
+  text-align: center;
+  padding: 96px 24px;
+}
+.empty__icon { font-size: 56px; margin-bottom: 16px; }
+.empty__text { color: var(--text-secondary); font-size: 14px; }
+
+@media (max-width: 640px) {
+  .toolbar { padding: 12px 16px; }
+  .grid { padding: 16px; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+  .card__img { height: 140px; }
+}
